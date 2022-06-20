@@ -1,6 +1,6 @@
 import Navbar from "../components/navbar"
-import {SearchBar} from "../components/searchbar"
-import ResultsGrid from "../components/ResultsGrid"
+import { SearchBar } from "../components/searchbar"
+import ResultsGrid from "../components/resultsgrid"
 import { useEffect, useState } from "react"
 
 export default function HomePage() {
@@ -9,10 +9,14 @@ export default function HomePage() {
     return (
         <div className="App">
             <Navbar />
-            <SearchBar setResults={setResults}/>
-            { results &&
-                <ResultsGrid results={results}/>
-            }
+            <div className="container mx-auto">
+                <br/>
+                <SearchBar setResults={setResults} />
+                <br/>
+                {results &&
+                    <ResultsGrid results={results} />
+                }
+            </div>
         </div>
     )
 }

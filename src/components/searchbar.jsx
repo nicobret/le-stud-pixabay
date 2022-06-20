@@ -1,19 +1,8 @@
 import { useState } from "react";
+import { fetchData } from "../services/search";
 
-export function SearchBar({setResults}) {
+export function SearchBar({ setResults }) {
     const [query, setQuery] = useState('');
-    
-    async function fetchData(query) {
-        const url = `https://pixabay.com/api/?key=17555297-46a99d3dc7abf78679ec9e640&q=${query}&image_type=photo&pretty=true`;
-        try {
-            const response = await fetch(url);
-            const data = await response.json();
-            console.log('data:', data);
-            return data.hits;
-        } catch (e) {
-            console.error(e);
-        }
-    }
 
     function handleChange(event) {
         setQuery(event.target.value)
@@ -27,7 +16,12 @@ export function SearchBar({setResults}) {
 
     return (
         <form onSubmit={e => handleSubmit(e)}>
-            <label htmlFor="default-search" className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-gray-300">Search</label>
+            <label
+                htmlFor="default-search"
+                className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-gray-300"
+            >
+                Search
+            </label>
             <div className="relative">
                 <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
                     <svg className="w-5 h-5 text-gray-500 dark:text-gray-400"
@@ -36,7 +30,12 @@ export function SearchBar({setResults}) {
                         viewBox="0 0 24 24"
                         xmlns="http://www.w3.org/2000/svg"
                     >
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                        ></path>
                     </svg>
                 </div>
                 <input
