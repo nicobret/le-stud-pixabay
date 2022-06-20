@@ -1,6 +1,6 @@
 import Navbar from "../components/navbar"
 import { SearchBar } from "../components/searchbar"
-import ResultsGrid from "../components/resultsgrid"
+import ResultsGrid from "./../components/resultsgrid"
 import { useEffect, useState } from "react"
 
 export default function HomePage() {
