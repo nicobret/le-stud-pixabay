@@ -1,6 +1,6 @@
 export default function Result({ result }) {
     return (
-        <div className="max-w-xs overflow-hidden rounded-xl bg-white shadow-md duration-200 hover:scale-105 hover:shadow-xl">
+        <div className="w-80 overflow-hidden rounded-xl bg-white shadow-md duration-200 hover:scale-105 hover:shadow-xl">
             <img
                 src={result.largeImageURL}
                 alt={result.tags}
@@ -8,7 +8,12 @@ export default function Result({ result }) {
             <a href={result.pageURL}>
                 <div className="p-5">
                     <p className="text-medium mb-5 text-gray-700">
-                        By {result.user}
+                        By { result.userImageURL &&
+                        <img
+                            src={result.userImageURL}
+                            className="inline max-h-8 rounded-full"
+                            alt="user avatar"
+                        />} {result.user}
                     </p>
                     <button
                         className="w-full rounded-md bg-indigo-600  py-2 text-indigo-100 hover:bg-indigo-500 hover:shadow-md duration-75">

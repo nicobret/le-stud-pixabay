@@ -4,23 +4,20 @@ import ResultsGrid from "../components/resultsgrid"
 import { useState } from "react"
 
 export default function HomePage() {
-    const [query, setQuery] = useState('');
+    const [savedQuery, setSavedQuery] = useState('');
     const [results, setResults] = useState();
 
     return (
         <div className="App">
-            <Navbar />
-            <div className="container mx-auto">
-                <br/>
+            <div className="container mx-auto space-y-4 p-10 max-w-8xl">
+                <Navbar />
                 <SearchBar
-                    query={query}
-                    setQuery={setQuery}
+                    setSavedQuery={setSavedQuery}
                     setResults={setResults}
                 />
-                <br/>
                 {results &&
                     <ResultsGrid
-                        query={query}
+                        savedQuery={savedQuery}
                         results={results}
                     />
                 }

@@ -3,8 +3,7 @@ import logo from "../logo.svg";
 import { useEffect, useState } from "react";
 import { fetchPage } from "../services/search";
 
-export default function ResultsGrid({ query, results }) {
-    console.log(query, results);
+export default function ResultsGrid({ savedQuery, results }) {
     const [page, setPage] = useState(0);
     const [displayedResults, setDisplayedResults] = useState(results.hits);
     const [number] = useState(results.totalHits / 20);
@@ -13,7 +12,6 @@ export default function ResultsGrid({ query, results }) {
     for (let i = 1; i <= number; i++) {
         pagination.push(i)
     }
-    console.log('number:', number, 'pagination:', pagination);
 
     // console.log('displayedResults:', displayedResults);
 
@@ -23,18 +21,18 @@ export default function ResultsGrid({ query, results }) {
 
     useEffect(() => {
         async function pagesetter() {
-            const data = await fetchPage(query, page);
+            const data = await fetchPage(savedQuery, page);
             setDisplayedResults(data.hits);
         }
         if (page !== 0) {
             pagesetter();
         }
-    }, [query, page])
+    }, [savedQuery, page])
 
     return (
         <>
             <p>
-                You searched for: "{query}". Results provided by <a href='https://pixabay.com/fr/'>
+                You searched for: "{savedQuery}". {results.totalHits} results. Provided by <a href='https://pixabay.com/fr/'>
                     <img
                         src={logo}
                         alt="pixabay logo"
@@ -42,11 +40,9 @@ export default function ResultsGrid({ query, results }) {
                     />
                 </a>
             </p>
-            <br />
             <div className="container mx-auto flex flex-row flex-wrap gap-4">
                 {displayedResults?.map(item => <Result result={item} key={item.id} />)}
             </div>
-            <br />
             <div>
                 Page
                 <select

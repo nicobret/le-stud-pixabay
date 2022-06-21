@@ -1,6 +1,8 @@
 import { fetchData } from "../services/search";
+import { useState } from "react";
 
-export function SearchBar({ query, setQuery, setResults }) {
+export function SearchBar({ setSavedQuery, setResults }) {
+    const [query, setQuery] = useState('');
 
     function handleChange(event) {
         setQuery(event.target.value)
@@ -10,6 +12,7 @@ export function SearchBar({ query, setQuery, setResults }) {
         event.preventDefault()
         const results = await fetchData(query);
         setResults(results);
+        setSavedQuery(query);
     }
 
     return (
