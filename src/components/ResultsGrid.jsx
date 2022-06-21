@@ -34,15 +34,11 @@ export default function ResultsGrid({ query, results }) {
     return (
         <>
             <p>
-                You searched for: "{query}".
-            </p>
-            <p>
-                Results provided by
-                <a href='https://pixabay.com/fr/'>
+                You searched for: "{query}". Results provided by <a href='https://pixabay.com/fr/'>
                     <img
                         src={logo}
                         alt="pixabay logo"
-                        className="max-w-xs"
+                        className="max-h-5 inline"
                     />
                 </a>
             </p>
