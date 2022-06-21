@@ -1,8 +1,6 @@
-import { useState } from "react";
 import { fetchData } from "../services/search";
 
-export function SearchBar({ setResults }) {
-    const [query, setQuery] = useState('');
+export function SearchBar({ query, setQuery, setResults }) {
 
     function handleChange(event) {
         setQuery(event.target.value)
