@@ -29,6 +29,9 @@ export default function ResultsGrid({ savedQuery, results }) {
         }
     }, [savedQuery, page])
 
+    useEffect(() => {
+        setPage(0);
+    }, [savedQuery])
 
     useEffect(() => {
         setDisplayedResults(results.hits);
